@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Canoa Quebrada</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="slogan_app">Seja bem-vindo a melhor praia do Brasil
+    </string>
+</resources>
