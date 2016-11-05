@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/nav_group" android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_guides"
+            android:icon="@drawable/ic_insert_emoticon_black_24dp"
+            android:title="@string/nav_guides"
+            />
+        <item
+            android:id="@+id/nav_breakfast"
+            android:icon="@android:drawable/ic_media_pause"
+            android:title="@string/nav_breakfast"
+            />
+        <item
+            android:id="@+id/nav_lunch"
+            android:icon="@android:drawable/btn_plus"
+            android:title="@string/nav_lunch"
+            />
+        <item
+            android:id="@+id/nav_snack"
+            android:icon="@android:drawable/ic_menu_camera"
+            android:title="@string/nav_snack"
+            />
+        <item
+            android:id="@+id/nav_dinners"
+            android:icon="@android:drawable/ic_menu_search"
+            android:title="@string/nav_dinners"
+            />
+        <item
+            android:id="@+id/nav_drinks"
+            android:icon="@android:drawable/ic_menu_zoom"
+            android:title="@string/nav_drinks"
+            />
+        <!---->
+        <item
+            android:id="@+id/nav_attractions"
+            android:icon="@drawable/ic_audiotrack_black_24dp"
+            android:title="@string/nav_attractions"
+            />
+        <item
+            android:id="@+id/nav_accommodations"
+            android:icon="@drawable/ic_weekend_black_24dp"
+            android:title="@string/nav_accommodations"
+            />
+    </group>
+
+    <item android:title="@string/nav_communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/nav_share"
+                />
+        </menu>
+    </item>
+
+    <item android:title="@string/more_about">
+        <menu>
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@mipmap/ic_launcher"
+                android:title="@string/nav_about"
+                />
+        </menu>
+    </item>
+
+</menu>

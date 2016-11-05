@@ -1,27 +1,36 @@
 <resources>
     <string name="app_name">Canoa Quebrada</string>
+    <string name="slogan_app">Seja bem-vindo a melhor praia do Brasil %1$d</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="action_settings">Settings</string>
-    <string name="slogan_app">Seja bem-vindo a melhor praia do Brasil
-    </string>
-    <string name="nav_guides">Guia de Turístas</string>
+
+    <string name="nav_guides">Morados Receptivos</string>
+    <string name="nav_breakfast">Café da Manhã</string>
+    <string name="nav_lunch">Almoço</string>
+    <string name="nav_snack">Café e Lances</string>
+    <string name="nav_dinners">Jantares</string>
+    <string name="nav_drinks">Bebidas</string>
     <string name="nav_attractions">Atrações</string>
     <string name="nav_accommodations">Pousadas</string>
-    <string name="nav_communicate">Communicate</string>
-    <string name="nav_share">Share</string>
-    <string name="nav_send">Send</string>
+    <string name="nav_communicate">Comunicar</string>
+    <string name="nav_share">Compartilhe</string>
+    <string name="nav_about">Sobre</string>
+    <string name="more_about">Mais informações</string>
 
-    <string-array name="nav">
-        <item>Guia de Turístas</item>
-        <item>Atrações</item>
-        <item>Pousadas</item>
-        <item>Comunicação</item>
-        <item>Compartilhar</item>
-        <item>Enviar</item>
+    <string-array name="navDo">
+        <item>@string/nav_guides</item>
+        <item>@string/nav_breakfast</item><!--Padaria-->
+        <item>@string/nav_lunch</item><!--Almoço, Para gastar pouco-->
+        <item>@string/nav_snack</item><!---->
+        <item>@string/nav_dinners</item><!--Geral, bom para crianças-->
+        <item>@string/nav_drinks</item><!--Bar-->
+        <item>@string/nav_attractions</item>
+        <item>@string/nav_accommodations</item>
+        <item>@string/nav_share</item>
+        <item>@string/nav_about</item>
     </string-array>
 
-    <string name="section_format">Hello World from section: %1$d</string>
+    <!--<string name="section_format">Hello World from section: %1$d</string>-->
 </resources>

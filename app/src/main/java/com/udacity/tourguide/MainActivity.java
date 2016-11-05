@@ -26,18 +26,22 @@ public class MainActivity extends AppCompatActivity
                           implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    // index to identify current nav menu item
     public static int navItemIndex = 0;
 
     private static final String TAG_GUIDES      = "guides";
+    private static final String TAG_BREAKFAST   = "breakfast";
+    private static final String TAG_LUNCH       = "lunch";
+    private static final String TAG_SNACK       = "snack";
+    private static final String TAG_DINNERS     = "dinners";
+    private static final String TAG_DRINKS      = "drinks";
     private static final String TAG_ATTRACTIONS = "attractions";
     private static final String TAG_HOTELS      = "hotels";
     private static final String TAG_SHARE       = "share";
+    private static final String TAG_ABOUT       = "about";
     public static String CURRENT_TAG            = TAG_GUIDES;
 
-    private String[] activityTitles;
+    private static String[] activityTitles;
 
-    private boolean shouldLoadHomeFragOnBackPress = true;
     private Handler mHandler;
     // UI
     private DrawerLayout mDrawer;
@@ -60,13 +64,13 @@ public class MainActivity extends AppCompatActivity
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         setupNavigationWithOnClick(toolbar, mDrawer, mNavigationView);
         //
-        activityTitles = getResources().getStringArray(R.array.nav);
+        activityTitles = getResources().getStringArray(R.array.navDo);
         mHandler = new Handler();
         //
         if (savedInstanceState == null) {
             navItemIndex = 0;
             CURRENT_TAG = TAG_GUIDES;
-            loadHomeFragment();//
+            loadHomeFragment();
         }
     }
 
@@ -119,7 +123,7 @@ public class MainActivity extends AppCompatActivity
 
 
     private void selectNavMenu() {
-        mNavigationView.getMenu().getItem(navItemIndex).setChecked(true);
+//        MenuItem menuItem = mNavigationView.getMenu().getItem(navItemIndex).setChecked(true);
     }
 
 
@@ -166,13 +170,11 @@ public class MainActivity extends AppCompatActivity
             mDrawer.closeDrawer(GravityCompat.START);
             return;
         }
-        if (shouldLoadHomeFragOnBackPress) {
-            if (navItemIndex != 0) {
-                navItemIndex = 0;
-                CURRENT_TAG  = TAG_GUIDES;
-                loadHomeFragment();
-                return;
-            }
+        if (navItemIndex != 0) {
+            navItemIndex = 0;
+            CURRENT_TAG  = TAG_GUIDES;
+            loadHomeFragment();
+            return;
         }
         super.onBackPressed();
     }
@@ -184,19 +186,43 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.nav_guides:
                 navItemIndex = 0;
-                CURRENT_TAG = TAG_GUIDES;
+                CURRENT_TAG  = TAG_GUIDES;
+                break;
+            case R.id.nav_breakfast:
+                navItemIndex = 1;
+                CURRENT_TAG  = TAG_BREAKFAST;
+                break;
+            case R.id.nav_lunch:
+                navItemIndex = 2;
+                CURRENT_TAG  = TAG_LUNCH;
+                break;
+            case R.id.nav_snack:
+                navItemIndex = 3;
+                CURRENT_TAG  = TAG_SNACK;
+                break;
+            case R.id.nav_dinners:
+                navItemIndex = 4;
+                CURRENT_TAG  = TAG_DINNERS;
+                break;
+            case R.id.nav_drinks:
+                navItemIndex = 5;
+                CURRENT_TAG  = TAG_DRINKS;
                 break;
             case R.id.nav_attractions:
-                navItemIndex = 1;
-                CURRENT_TAG = TAG_ATTRACTIONS;
+                navItemIndex = 6;
+                CURRENT_TAG  = TAG_ATTRACTIONS;
                 break;
             case R.id.nav_accommodations:
-                navItemIndex = 2;
-                CURRENT_TAG = TAG_HOTELS;
+                navItemIndex = 7;
+                CURRENT_TAG  = TAG_HOTELS;
                 break;
             case R.id.nav_share:
-                navItemIndex = 3;
-                CURRENT_TAG = TAG_SHARE;
+                navItemIndex = 8;
+                CURRENT_TAG  = TAG_SHARE;
+                break;
+            case R.id.nav_about:
+                navItemIndex = 9;
+                CURRENT_TAG  = TAG_ABOUT;
                 break;
             default:
                 navItemIndex = 0;
@@ -216,11 +242,6 @@ public class MainActivity extends AppCompatActivity
 
 
 
-    /**
-     * Activities that contain this fragment must implement the
-     * {@link PlaceholderFragment.OnFragmentInteractionListener} interface to handle interaction events.
-     * Use the {@link PlaceholderFragment#newInstance} factory method to create an instance of this fragment.
-     */
     public static class PlaceholderFragment extends Fragment
     {
         private static final String ARG_ARGUMENT = "navItemIndex";
@@ -255,20 +276,25 @@ public class MainActivity extends AppCompatActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View rootView = inflater.inflate(R.layout.include_content_main, container, false);
-            int[] imagesId = new int[]{
+            int[] imagesId = new int[] { // Como posso chamar de menu_activity_main_drawer.xml, menu-item-icon?
                     R.drawable.ic_insert_emoticon_black_24dp,
+                    android.R.drawable.ic_media_pause,
+                    android.R.drawable.btn_plus,
+                    android.R.drawable.ic_menu_camera,
+                    android.R.drawable.ic_menu_search,
+                    android.R.drawable.ic_menu_zoom,
                     R.drawable.ic_audiotrack_black_24dp,
                     R.drawable.ic_weekend_black_24dp,
                     R.drawable.ic_menu_share,
+                    R.mipmap.ic_launcher,
             };
             ImageView imageView = (ImageView) rootView.findViewById(R.id.image);
             imageView.setImageResource(imagesId[mArgument]);
             //
             TextView textView = (TextView) rootView.findViewById(R.id.labelText);
-            textView.setText(getString(R.string.section_format, mArgument));
+            textView.setText(getString(R.string.slogan_app, mArgument));
             //
-            String nav = getResources().getStringArray(R.array.nav)[mArgument];
-            getActivity().setTitle(nav);
+            getActivity().setTitle(activityTitles[mArgument]);
             //
             return rootView;
         }

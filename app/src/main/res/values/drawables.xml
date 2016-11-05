@@ -1,8 +1,25 @@
 <resources>
-    <item name="ic_menu_camera" type="drawable">@android:drawable/ic_menu_camera</item>
-    <item name="ic_menu_gallery" type="drawable">@android:drawable/ic_menu_gallery</item>
-    <item name="ic_menu_slideshow" type="drawable">@android:drawable/ic_menu_slideshow</item>
-    <item name="ic_menu_manage" type="drawable">@android:drawable/ic_menu_manage</item>
-    <item name="ic_menu_share" type="drawable">@android:drawable/ic_menu_share</item>
-    <item name="ic_menu_send" type="drawable">@android:drawable/ic_menu_send</item>
+    <!--<item name="ic_menu_camera" type="drawable">@android:drawable/ic_menu_camera</item>-->
+    <!--<item name="ic_menu_gallery" type="drawable">@android:drawable/ic_menu_gallery</item>-->
+    <!--<item name="ic_menu_slideshow" type="drawable">@android:drawable/ic_menu_slideshow</item>-->
+    <!--<item name="ic_menu_manage" type="drawable">@android:drawable/ic_menu_manage</item>-->
+    <!--<item name="ic_menu_share" type="drawable">@android:drawable/ic_menu_share</item>-->
+    <!--<item name="ic_menu_send" type="drawable">@android:drawable/ic_menu_send</item>-->
+
+    <!--<item name="ic_audiotrack_black_24dp" type="drawable">@drawable/ic_audiotrack_black_24dp</item>-->
+    <!--<item name="ic_insert_emoticon_black_24dp" type="drawable">@drawable/ic_insert_emoticon_black_24dp</item>-->
+    <!--<item name="ic_weekend_black_24dp" type="drawable">@drawable/ic_weekend_black_24dp</item>-->
+
+    <integer-array name="navDrawable">
+        <item name="ic_menu_camera" type="drawable">@android:drawable/ic_menu_camera</item>
+        <item name="ic_menu_gallery" type="drawable">@android:drawable/ic_menu_gallery</item>
+        <item name="ic_menu_slideshow" type="drawable">@android:drawable/ic_menu_slideshow</item>
+        <item name="ic_menu_manage" type="drawable">@android:drawable/ic_menu_manage</item>
+        <item name="ic_menu_share" type="drawable">@android:drawable/ic_menu_share</item>
+        <item name="ic_menu_send" type="drawable">@android:drawable/ic_menu_send</item>
+
+        <item name="ic_audiotrack_black_24dp" type="drawable">@drawable/ic_audiotrack_black_24dp</item>
+        <item name="ic_insert_emoticon_black_24dp" type="drawable">@drawable/ic_insert_emoticon_black_24dp</item>
+        <item name="ic_weekend_black_24dp" type="drawable">@drawable/ic_weekend_black_24dp</item>
+    </integer-array>
 </resources>
