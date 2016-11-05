@@ -13,4 +13,15 @@
     <string name="nav_communicate">Communicate</string>
     <string name="nav_share">Share</string>
     <string name="nav_send">Send</string>
+
+    <string-array name="nav">
+        <item>Guia de Turístas</item>
+        <item>Atrações</item>
+        <item>Pousadas</item>
+        <item>Comunicação</item>
+        <item>Compartilhar</item>
+        <item>Enviar</item>
+    </string-array>
+
+    <string name="section_format">Hello World from section: %1$d</string>
 </resources>
