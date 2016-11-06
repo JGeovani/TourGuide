@@ -13,13 +13,22 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.udacity.tourguide.adapter.DwellerAdapter;
+import com.udacity.tourguide.dummy.DummyContent;
+import com.udacity.tourguide.model.Dweller;
+import com.udacity.tourguide.util.GridSpacingItemDecoration;
+import com.udacity.tourguide.util.Transformation;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity
@@ -246,6 +255,11 @@ public class MainActivity extends AppCompatActivity
     {
         private static final String ARG_ARGUMENT = "navItemIndex";
         private int mArgument;
+        //
+        private List<Dweller> mDwellers;
+        private DwellerAdapter mAdapter;
+        // UI
+        private RecyclerView mRecyclerView;
 
         public PlaceholderFragment()
         {
@@ -275,28 +289,74 @@ public class MainActivity extends AppCompatActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            View rootView = inflater.inflate(R.layout.include_content_main, container, false);
-            int[] imagesId = new int[] { // Como posso chamar de menu_activity_main_drawer.xml, menu-item-icon?
-                    R.drawable.ic_insert_emoticon_black_24dp,
-                    android.R.drawable.ic_media_pause,
-                    android.R.drawable.btn_plus,
-                    android.R.drawable.ic_menu_camera,
-                    android.R.drawable.ic_menu_search,
-                    android.R.drawable.ic_menu_zoom,
-                    R.drawable.ic_audiotrack_black_24dp,
-                    R.drawable.ic_weekend_black_24dp,
-                    R.drawable.ic_menu_share,
-                    R.mipmap.ic_launcher,
-            };
-            ImageView imageView = (ImageView) rootView.findViewById(R.id.image);
-            imageView.setImageResource(imagesId[mArgument]);
+            View rootView = inflater.inflate(R.layout.fragment_main, container, false);//include_content_main.xml
+            RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
             //
-            TextView textView = (TextView) rootView.findViewById(R.id.labelText);
-            textView.setText(getString(R.string.slogan_app, mArgument));
+            switchDummyAdapter(mArgument);
+            //
+            setupRecyclerView(recyclerView, mAdapter);
+            mAdapter.notifyDataSetChanged();
             //
             getActivity().setTitle(activityTitles[mArgument]);
             //
             return rootView;
+        }
+
+        private void switchDummyAdapter(int argument)
+        {
+            switch (argument) {
+                case 0:
+                    mDwellers = DummyContent.DWELLERS;
+                    mAdapter = new DwellerAdapter(getContext(), mDwellers);
+                    break;
+                case 1:
+                    //
+                    //mAdapter = new ;
+                    break;
+                case 2:
+                    //
+                    //mAdapter = new ;
+                    break;
+                case 3:
+                    //
+                    //mAdapter = new ;
+                    break;
+                case 4:
+                    //
+                    //mAdapter = new ;
+                break;
+                case 5:
+                    //
+                    //mAdapter = new ;
+                break;
+                case 6:
+                    //
+                    //mAdapter = new ;
+                    break;
+                case 7:
+                    //
+                    //mAdapter = new ;
+                    break;
+                case 8:
+                    //
+                    //mAdapter = new ;
+                    break;
+                case 9:
+                    //
+                    //mAdapter = new ;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void setupRecyclerView(RecyclerView recyclerView, DwellerAdapter dwellerAdapter)
+        {
+            RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 1);
+            recyclerView.setLayoutManager(mLayoutManager);
+            recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, Transformation.dpToPx(10, getResources()), true));
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.setAdapter(dwellerAdapter);
         }
 
         public interface OnFragmentInteractionListener
