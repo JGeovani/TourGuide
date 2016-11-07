@@ -1,6 +1,6 @@
 package com.udacity.tourguide;
 
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -23,12 +23,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.udacity.tourguide.adapter.DwellerAdapter;
+import com.udacity.tourguide.adapter.MealAdapter;
 import com.udacity.tourguide.dummy.DummyContent;
-import com.udacity.tourguide.model.Dweller;
 import com.udacity.tourguide.util.GridSpacingItemDecoration;
 import com.udacity.tourguide.util.Transformation;
-
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity
@@ -37,15 +35,12 @@ public class MainActivity extends AppCompatActivity
     private static final String TAG = MainActivity.class.getSimpleName();
     public static int navItemIndex = 0;
 
-    private static final String TAG_GUIDES      = "guides";
+    static final String TAG_GUIDES      = "guides";
     private static final String TAG_BREAKFAST   = "breakfast";
     private static final String TAG_LUNCH       = "lunch";
     private static final String TAG_SNACK       = "snack";
     private static final String TAG_DINNERS     = "dinners";
     private static final String TAG_DRINKS      = "drinks";
-    private static final String TAG_ATTRACTIONS = "attractions";
-    private static final String TAG_HOTELS      = "hotels";
-    private static final String TAG_SHARE       = "share";
     private static final String TAG_ABOUT       = "about";
     public static String CURRENT_TAG            = TAG_GUIDES;
 
@@ -85,7 +80,6 @@ public class MainActivity extends AppCompatActivity
 
 
     private void loadHomeFragment() {
-        selectNavMenu();
         setToolbarTitle();
         if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
             mDrawer.closeDrawers();
@@ -104,7 +98,7 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commitAllowingStateLoss();
             }
         };
-        if (mPendingRunnable != null) { // If mPendingRunnable is not null, then add to the message queue
+        if (mPendingRunnable != null) {
             mHandler.post(mPendingRunnable);
         }
         toggleFab();
@@ -131,13 +125,8 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    private void selectNavMenu() {
-//        MenuItem menuItem = mNavigationView.getMenu().getItem(navItemIndex).setChecked(true);
-    }
-
-
     private void setToolbarTitle() {
-        getSupportActionBar().setTitle(activityTitles[navItemIndex]);
+//        getSupportActionBar().setTitle(activityTitles[navItemIndex]);
     }
 
 
@@ -217,35 +206,21 @@ public class MainActivity extends AppCompatActivity
                 navItemIndex = 5;
                 CURRENT_TAG  = TAG_DRINKS;
                 break;
-            case R.id.nav_attractions:
-                navItemIndex = 6;
-                CURRENT_TAG  = TAG_ATTRACTIONS;
-                break;
-            case R.id.nav_accommodations:
-                navItemIndex = 7;
-                CURRENT_TAG  = TAG_HOTELS;
-                break;
-            case R.id.nav_share:
-                navItemIndex = 8;
-                CURRENT_TAG  = TAG_SHARE;
-                break;
             case R.id.nav_about:
-                navItemIndex = 9;
+                navItemIndex = 6;
                 CURRENT_TAG  = TAG_ABOUT;
                 break;
             default:
                 navItemIndex = 0;
         }
-
+        //
         if (item.isChecked()) {
             item.setChecked(false);
         } else {
             item.setChecked(true);
         }
         item.setChecked(true);
-
         loadHomeFragment();
-
         return true;
     }
 
@@ -256,10 +231,7 @@ public class MainActivity extends AppCompatActivity
         private static final String ARG_ARGUMENT = "navItemIndex";
         private int mArgument;
         //
-        private List<Dweller> mDwellers;
-        private DwellerAdapter mAdapter;
-        // UI
-        private RecyclerView mRecyclerView;
+        private RecyclerView.Adapter mAdapter;
 
         public PlaceholderFragment()
         {
@@ -293,9 +265,10 @@ public class MainActivity extends AppCompatActivity
             RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
             //
             switchDummyAdapter(mArgument);
-            //
             setupRecyclerView(recyclerView, mAdapter);
-            mAdapter.notifyDataSetChanged();
+            if (mAdapter != null) {
+                mAdapter.notifyDataSetChanged();
+            }
             //
             getActivity().setTitle(activityTitles[mArgument]);
             //
@@ -306,63 +279,39 @@ public class MainActivity extends AppCompatActivity
         {
             switch (argument) {
                 case 0:
-                    mDwellers = DummyContent.DWELLERS;
-                    mAdapter = new DwellerAdapter(getContext(), mDwellers);
+                    mAdapter = new DwellerAdapter(getContext(), DummyContent.DWELLERS);
                     break;
                 case 1:
-                    //
-                    //mAdapter = new ;
+                    mAdapter = new MealAdapter(getContext(), DummyContent.BREAKFASTS);
                     break;
                 case 2:
-                    //
-                    //mAdapter = new ;
+                    mAdapter = new MealAdapter(getContext(), DummyContent.LUNCHS);
                     break;
                 case 3:
-                    //
-                    //mAdapter = new ;
+                    mAdapter = new MealAdapter(getContext(), DummyContent.SNACS);
                     break;
                 case 4:
-                    //
-                    //mAdapter = new ;
-                break;
+                    mAdapter = new MealAdapter(getContext(), DummyContent.DINNERS);
+                    break;
                 case 5:
-                    //
-                    //mAdapter = new ;
-                break;
+                    mAdapter = new MealAdapter(getContext(), DummyContent.DRINKS);
+                    break;
                 case 6:
-                    //
-                    //mAdapter = new ;
-                    break;
-                case 7:
-                    //
-                    //mAdapter = new ;
-                    break;
-                case 8:
-                    //
-                    //mAdapter = new ;
-                    break;
-                case 9:
-                    //
-                    //mAdapter = new ;
-                    break;
+                    mAdapter = null;
+                    CURRENT_TAG  = TAG_GUIDES;
+                    startActivity(new Intent(getContext(), AboutActivity.class));
                 default:
                     break;
             }
         }
 
-        private void setupRecyclerView(RecyclerView recyclerView, DwellerAdapter dwellerAdapter)
+        private void setupRecyclerView(RecyclerView recyclerView, RecyclerView.Adapter adapter)
         {
             RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 1);
             recyclerView.setLayoutManager(mLayoutManager);
             recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, Transformation.dpToPx(10, getResources()), true));
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-            recyclerView.setAdapter(dwellerAdapter);
-        }
-
-        public interface OnFragmentInteractionListener
-        {
-            // TODO: Update argument type and name
-            void onFragmentInteraction(Uri uri);
+            recyclerView.setAdapter(adapter);
         }
     }
 

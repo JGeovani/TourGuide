@@ -8,49 +8,48 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.udacity.tourguide.R;
-import com.udacity.tourguide.model.Dweller;
+import com.udacity.tourguide.model.Meal;
 
 import java.util.List;
+
 
 /**
  * Created by geovani on 06/11/16.
  */
 
 
-public class DwellerAdapter extends RecyclerView.Adapter<DwellerAdapter.MyViewHolder> {
+public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder> {
 
-    private final static String TAG = DwellerAdapter.class.getSimpleName();
+    private final static String TAG = MealAdapter.class.getSimpleName();
 
     private Context mContext;
-    private List<Dweller> mDwellers;
+    private List<Meal> mMeals;
 
 
-    public DwellerAdapter(Context context, List<Dweller> dwellers) {
-        mContext  = context;
-        mDwellers = dwellers;
+    public MealAdapter(Context context, List<Meal> meals) {
+        mContext = context;
+        mMeals   = meals;
     }
 
 
     @Override
-    public DwellerAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_dweller, parent, false);
-        return new DwellerAdapter.MyViewHolder(itemView);
+    public MealAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_card_meal, parent, false);
+        return new MealAdapter.MyViewHolder(itemView);
     }
 
 
     @Override
-    public void onBindViewHolder(DwellerAdapter.MyViewHolder holder, int position) {
-        Dweller dweller = mDwellers.get(position);
-        holder.mNameText.setText(dweller.getName());
+    public void onBindViewHolder(MealAdapter.MyViewHolder holder, int position) {
+        Meal meal = mMeals.get(position);
+        holder.mNameText.setText(meal.getName());
         //
-        holder.mImageView.setImageResource(dweller.getImage());
+        holder.mImageView.setImageResource(meal.getImage());
         //
-        holder.mRatingBar.setNumStars(dweller.getRating());
-        holder.mDescText.setText(dweller.getDescription());
+        holder.mDescText.setText(meal.getDescription());
         //
         startActivityOnClick(holder);
     }
@@ -58,7 +57,7 @@ public class DwellerAdapter extends RecyclerView.Adapter<DwellerAdapter.MyViewHo
 
     private void startActivityOnClick(final MyViewHolder holder) {
         final Bundle params = new Bundle();
-        params.putString("dweller", holder.mNameText.getText().toString());
+        params.putString("meal", holder.mNameText.getText().toString());
         //
         holder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +70,7 @@ public class DwellerAdapter extends RecyclerView.Adapter<DwellerAdapter.MyViewHo
 
     @Override
     public int getItemCount() {
-        return mDwellers.size();
+        return mMeals.size();
     }
 
 
@@ -79,7 +78,6 @@ public class DwellerAdapter extends RecyclerView.Adapter<DwellerAdapter.MyViewHo
     {
         public TextView mNameText;
         public ImageView mImageView;
-        public RatingBar mRatingBar;
         public TextView mDescText;
         public View mView;
 
@@ -88,7 +86,6 @@ public class DwellerAdapter extends RecyclerView.Adapter<DwellerAdapter.MyViewHo
             super(itemView);
             mNameText  = (TextView) itemView.findViewById(R.id.nameText);
             mImageView = (ImageView) itemView.findViewById(R.id.imageView);
-            mRatingBar = (RatingBar) itemView.findViewById(R.id.ratingBar);
             mDescText  = (TextView) itemView.findViewById(R.id.descriptionText);
             mView      = itemView;
         }

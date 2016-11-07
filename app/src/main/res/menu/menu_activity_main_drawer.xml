@@ -32,28 +32,7 @@
             android:icon="@android:drawable/ic_menu_zoom"
             android:title="@string/nav_drinks"
             />
-        <!---->
-        <item
-            android:id="@+id/nav_attractions"
-            android:icon="@drawable/ic_audiotrack_black_24dp"
-            android:title="@string/nav_attractions"
-            />
-        <item
-            android:id="@+id/nav_accommodations"
-            android:icon="@drawable/ic_weekend_black_24dp"
-            android:title="@string/nav_accommodations"
-            />
     </group>
-
-    <item android:title="@string/nav_communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/nav_share"
-                />
-        </menu>
-    </item>
 
     <item android:title="@string/more_about">
         <menu>

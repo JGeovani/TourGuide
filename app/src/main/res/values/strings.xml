@@ -12,10 +12,6 @@
     <string name="nav_snack">Café e Lances</string>
     <string name="nav_dinners">Jantares</string>
     <string name="nav_drinks">Bebidas</string>
-    <string name="nav_attractions">Atrações</string>
-    <string name="nav_accommodations">Pousadas</string>
-    <string name="nav_communicate">Comunicar</string>
-    <string name="nav_share">Compartilhe</string>
     <string name="nav_about">Sobre</string>
     <string name="more_about">Mais informações</string>
 
@@ -26,11 +22,11 @@
         <item>@string/nav_snack</item><!---->
         <item>@string/nav_dinners</item><!--Geral, bom para crianças-->
         <item>@string/nav_drinks</item><!--Bar-->
-        <item>@string/nav_attractions</item>
-        <item>@string/nav_accommodations</item>
-        <item>@string/nav_share</item>
         <item>@string/nav_about</item>
     </string-array>
 
-    <!--<string name="section_format">Hello World from section: %1$d</string>-->
+    <!--AboutActivity-->
+    <string name="title_activity_about">Sobre</string>
+    <string name="dummy_button">Seguir</string>
+    <string name="dummy_content">Fork me on Github</string>
 </resources>
