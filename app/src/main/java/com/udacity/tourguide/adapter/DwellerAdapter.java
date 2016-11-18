@@ -46,12 +46,9 @@ public class DwellerAdapter extends RecyclerView.Adapter<DwellerAdapter.MyViewHo
     public void onBindViewHolder(DwellerAdapter.MyViewHolder holder, int position) {
         Dweller dweller = mDwellers.get(position);
         holder.mNameText.setText(dweller.getName());
-        //
         holder.mImageView.setImageResource(dweller.getImage());
-        //
         holder.mRatingBar.setNumStars(dweller.getRating());
         holder.mDescText.setText(dweller.getDescription());
-        //
         startActivityOnClick(holder);
     }
 
@@ -59,7 +56,6 @@ public class DwellerAdapter extends RecyclerView.Adapter<DwellerAdapter.MyViewHo
     private void startActivityOnClick(final MyViewHolder holder) {
         final Bundle params = new Bundle();
         params.putString("dweller", holder.mNameText.getText().toString());
-        //
         holder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

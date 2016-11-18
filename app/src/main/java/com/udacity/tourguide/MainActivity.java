@@ -32,10 +32,9 @@ import com.udacity.tourguide.util.Transformation;
 public class MainActivity extends AppCompatActivity
                           implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
     public static int navItemIndex = 0;
 
-    static final String TAG_GUIDES      = "guides";
+    static final String TAG_GUIDES              = "guides";
     private static final String TAG_BREAKFAST   = "breakfast";
     private static final String TAG_LUNCH       = "lunch";
     private static final String TAG_SNACK       = "snack";
@@ -98,9 +97,7 @@ public class MainActivity extends AppCompatActivity
                 fragmentTransaction.commitAllowingStateLoss();
             }
         };
-        if (mPendingRunnable != null) {
-            mHandler.post(mPendingRunnable);
-        }
+        mHandler.post(mPendingRunnable);
         toggleFab();
         mDrawer.closeDrawers();
         invalidateOptionsMenu();
@@ -230,7 +227,6 @@ public class MainActivity extends AppCompatActivity
     {
         private static final String ARG_ARGUMENT = "navItemIndex";
         private int mArgument;
-        //
         private RecyclerView.Adapter mAdapter;
 
         public PlaceholderFragment()

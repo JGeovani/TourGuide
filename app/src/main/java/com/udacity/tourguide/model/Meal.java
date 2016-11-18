@@ -24,6 +24,7 @@ public class Meal {
         return mName;
     }
 
+
     public void setName(String name) {
         mName = name;
     }
@@ -33,16 +34,10 @@ public class Meal {
         return mImage;
     }
 
-    public void setImage(int image) {
-        mImage = image;
-    }
-
 
     public String getDescription() {
         return mDescription;
     }
 
-    public void setDescription(String description) {
-        mDescription = description;
-    }
+
 }

@@ -18,7 +18,6 @@ public class DummyContent {
     public static final List<Dweller> DWELLERS = new ArrayList<>();
     public static final Map<String, Dweller> DWELLER_MAP = new HashMap<>();
     private static final int SIZE_DWELLERS = 32;
-    public static final Object ABOUT = 0;
 
     static {
         for (int i = 0; i < SIZE_DWELLERS; i++) {

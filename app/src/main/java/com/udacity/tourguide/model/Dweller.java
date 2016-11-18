@@ -9,7 +9,7 @@ public class Dweller {
     public final String mID;
     private String mName;
     private int mImage;
-    private int mRating; // [1, 5] estrelas
+    private int mRating;
     private String mDescription;
 
 
@@ -26,6 +26,7 @@ public class Dweller {
         return mName;
     }
 
+
     public void setName(String name) {
         mName = name;
     }
@@ -35,29 +36,15 @@ public class Dweller {
         return mImage;
     }
 
-    public void setImage(int image) {
-        mImage = image;
-    }
-
 
     public int getRating() {
         return mRating;
     }
 
 
-    public void setRating(int rating) {
-        mRating = rating;
-    }
-
-
     public String getDescription() {
         return mDescription;
     }
-
-    public void setDescription(String description) {
-        mDescription = description;
-    }
-
 
 
 }

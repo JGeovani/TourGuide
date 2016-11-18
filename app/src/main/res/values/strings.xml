@@ -15,16 +15,6 @@
     <string name="nav_about">Sobre</string>
     <string name="more_about">Mais informações</string>
 
-    <string-array name="navDo">
-        <item>@string/nav_guides</item>
-        <item>@string/nav_breakfast</item><!--Padaria-->
-        <item>@string/nav_lunch</item><!--Almoço, Para gastar pouco-->
-        <item>@string/nav_snack</item><!---->
-        <item>@string/nav_dinners</item><!--Geral, bom para crianças-->
-        <item>@string/nav_drinks</item><!--Bar-->
-        <item>@string/nav_about</item>
-    </string-array>
-
     <!--AboutActivity-->
     <string name="title_activity_about">Sobre</string>
     <string name="dummy_button">Seguir</string>

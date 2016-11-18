@@ -46,11 +46,8 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder> 
     public void onBindViewHolder(MealAdapter.MyViewHolder holder, int position) {
         Meal meal = mMeals.get(position);
         holder.mNameText.setText(meal.getName());
-        //
         holder.mImageView.setImageResource(meal.getImage());
-        //
         holder.mDescText.setText(meal.getDescription());
-        //
         startActivityOnClick(holder);
     }
 
@@ -58,7 +55,6 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MyViewHolder> 
     private void startActivityOnClick(final MyViewHolder holder) {
         final Bundle params = new Bundle();
         params.putString("meal", holder.mNameText.getText().toString());
-        //
         holder.mImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
