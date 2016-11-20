@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="navDo">
+        <item>@string/nav_guides</item>
+        <item>@string/nav_breakfast</item>
+        <item>@string/nav_lunch</item>
+        <item>@string/nav_snack</item>
+        <item>@string/nav_dinners</item>
+        <item>@string/nav_drinks</item>
+        <item>@string/nav_about</item>
+    </string-array>
+</resources>

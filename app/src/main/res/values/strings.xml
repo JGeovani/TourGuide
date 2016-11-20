@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Canoa Quebrada</string>
-    <string name="slogan_app">Seja bem-vindo a melhor praia do Brasil %1$d</string>
+    <string name="slogan_app">Seja bem-vindo a melhor praia do Brasil</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
